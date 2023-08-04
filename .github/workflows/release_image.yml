@@ -1,0 +1,48 @@
+name: Release Image
+on:
+  workflow_dispatch:
+    inputs:
+      image:
+        description: '发布的镜像'
+        required: true
+        default: 'node_18'
+        type: choice
+        options:
+          - node_18
+          - python_310
+
+
+# ***************** 前端组件 *****************
+jobs:
+  web_deploy:
+    runs-on: ubuntu-latest
+    env:
+      MAIN_IMG_NAME: ckeyer/dev:${{ github.event.inputs.image }}
+      ALI_IMG_NAME: registry.cn-beijing.aliyuncs.com/wa/dev:${{ github.event.inputs.image }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Build image
+        run: |
+          cd ${{ github.event.inputs.image }}
+          docker build -t $MAIN_IMG_NAME .
+
+      - name: Push Docker Hub
+        run: |
+          echo "${{ secrets.DOCKER_HUB_PASSWORD }}" | docker login -u ${{ secrets.DOCKER_HUB_USERNAME }} --password-stdin
+          docker push $MAIN_IMG_NAME
+
+      - name: Push Ali CR
+        run: |
+          echo "${{ secrets.ALI_CR_PASSWORD }}" | docker login registry.cn-beijing.aliyuncs.com -u ${{ secrets.ALI_CR_USERNAME }} --password-stdin
+          docker tag $MAIN_IMG_NAME $ALI_IMG_NAME
+          docker push $ALI_IMG_NAME
+
+      - name: Notify Message
+        run: |
+          curl -H "Content-Type: application/json;charset=utf-8"  -d "{\"msgtype\": \"text\",\"text\": {\"content\":\"基础镜像 $MAIN_IMG_NAME 发布成功\"}}" "https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=badfc85d-68f4-4f06-a47e-5518560f1e13"
+      - name: Notify Failed
+        if: failure()
+        run: |
+          curl -H "Content-Type: application/json;charset=utf-8"  -d "{\"msgtype\": \"text\",\"text\": {\"content\":\"基础镜像 $MAIN_IMG_NAME 发布成功\"}}" "https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=badfc85d-68f4-4f06-a47e-5518560f1e13"
