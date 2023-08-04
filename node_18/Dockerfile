@@ -6,4 +6,6 @@ FROM node:18.17.0
 # ENV NODE_OPTIONS=--max-old-space-size=16384
 # 设置阿里镜像、pnpm、依赖、编译
 RUN npm install -g npm@9.8.1 \
-    npm install pnpm -g
+    npm install pnpm yarn -g
+
+RUN yarn global add esbuild vite
