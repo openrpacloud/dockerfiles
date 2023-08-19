@@ -1,5 +1,7 @@
 FROM node:18.17.0
 
+MAINTAINER Chuanjian Wang <me@ckeyer.com>
+
 # 设置 node 阿里镜像
 # RUN npm config set registry https://registry.npm.taobao.org
 # 设置--max-old-space-size
