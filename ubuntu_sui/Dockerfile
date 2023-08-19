@@ -3,8 +3,7 @@ FROM ubuntu:20.04
 
 ENV PATH=$PATH:/root/.cargo/bin
 
-RUN mv -f /etc/localtime /etc/localtime.old && \
-    ln -s /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+RUN ln -s /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 
 RUN apt update -y && \
     apt install curl git-all cmake gcc libssl-dev pkg-config libclang-dev libpq-dev build-essential -y && \
