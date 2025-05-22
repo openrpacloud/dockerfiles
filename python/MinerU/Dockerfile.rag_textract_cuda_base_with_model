@@ -1,0 +1,6 @@
+FROM registry.cn-beijing.aliyuncs.com/wa/hub:rag_textract_cuda_base
+
+COPY download_models.py /app/scripts/download_models.py
+
+RUN pip install modelscope && python /app/scripts/download_models.py
+
