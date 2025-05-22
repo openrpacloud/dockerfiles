@@ -1,6 +1,6 @@
 FROM registry.cn-beijing.aliyuncs.com/wa/hub:cuda_12.4.1-torch-2.7
 
-RUN apt update && apt install -y libgl1
+RUN apt update && apt install -y libgl1 libglib2.0-0
 
 COPY requirements.txt /tmp/requirements.txt
 
