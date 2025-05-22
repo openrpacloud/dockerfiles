@@ -1,11 +1,12 @@
 # TO registry.cn-beijing.aliyuncs.com/wa/hub:cuda_12.4.1-torch-2.7
-FROM registry.cn-beijing.aliyuncs.com/wa/hub:nvidia_cuda_12.4.1-runtime-ubuntu22.04
+# FROM registry.cn-beijing.aliyuncs.com/wa/hub:nvidia_cuda_12.4.1-runtime-ubuntu22.04
+FROM nvidia/cuda:12.4.1-runtime-ubuntu22.04
 
 ENV TZ=Asia/Shanghai
 
 RUN apt update && \
     apt install -y --no-install-recommends python3.10 pip
 
-RUN pip config set global.index-url https://mirrors.aliyun.com/pypi/simple/
+# RUN pip config set global.index-url https://mirrors.aliyun.com/pypi/simple/
 
 RUN pip install --no-cache-dir torch==2.7.0 torchvision

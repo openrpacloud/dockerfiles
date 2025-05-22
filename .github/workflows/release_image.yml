@@ -33,8 +33,8 @@ jobs:
 
       - name: Build image
         run: |
-          cd ${{ github.event.inputs.image }}
-          docker build -t $ALI_IMG_NAME -f ${{github.event.inputs.dockerfile_path}} .
+          echo "docker build -t $ALI_IMG_NAME -f ./${{github.event.inputs.dockerfile_path}} ."
+          docker build -t $ALI_IMG_NAME -f ./${{github.event.inputs.dockerfile_path}} .
 
       # - name: Push Docker Hub
       #   run: |
