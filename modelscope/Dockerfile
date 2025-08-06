@@ -1,7 +1,7 @@
 # TO registry.yygu.cn/llm-models/download:1.0
 FROM registry.yygu.cn/base/python:3.10
 
-RUN pip3 install modelscope -i https://mirrors.aliyun.com/pypi/simple/
+RUN pip3 install filelock modelscope -i https://mirrors.aliyun.com/pypi/simple/
 
 COPY download.py /
 
