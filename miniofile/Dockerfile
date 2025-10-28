@@ -1,5 +1,5 @@
 # 基础镜像
-FROM registry.yygu.cn/library/alpine:3
+FROM registry.yygu.cn/library/ubuntu:22.04
 
 # 设置工作目录
 WORKDIR /app
