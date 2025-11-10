@@ -28,6 +28,7 @@ frontend f_merged
 
 backend b_models
     balance roundrobin
+    option httpchk GET /health
 EOF
 
 for i in $(seq 1 $ROUTINE_NUM); do
