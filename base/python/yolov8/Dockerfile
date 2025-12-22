@@ -12,5 +12,5 @@ RUN pip config set global.index-url https://mirrors.aliyun.com/pypi/simple/
 COPY requirements.txt /tmp/requirements.txt
 RUN pip install --no-cache-dir -r /tmp/requirements.txt
 
-COPY Ultralytics /root/.config/
+COPY Ultralytics/ /root/.config/Ultralytics/
 
