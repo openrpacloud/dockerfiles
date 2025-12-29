@@ -39,5 +39,4 @@ json_repair
 PyMuPDF
 pynvml
 numba
-torch
 elasticsearch
