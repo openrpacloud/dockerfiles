@@ -1,3 +1,4 @@
+# To registry.yygu.cn/library/minio-init:v0.1.2
 # 基础镜像
 FROM registry.yygu.cn/library/ubuntu:22.04
 

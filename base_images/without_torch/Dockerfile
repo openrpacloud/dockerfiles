@@ -21,5 +21,5 @@ RUN pip install --no-cache-dir -r /app/requirements.txt
 CMD [ "python3" ]
 
 
-# TO registry.yygu.cn/base/without-torch:v2.8.0
-# docker build -f Dockerfile -t registry.yygu.cn/base/without-torch:v2.8.0 .
+# TO registry.yygu.cn/base/without-torch:v2.8.1
+# docker build -f Dockerfile -t registry.yygu.cn/base/without-torch:v2.8.1-amd64 .
