@@ -1,3 +1,4 @@
+# TO registry.yygu.cn/base/elasticsearch:8.18.1-1
 FROM registry.yygu.cn/library/elasticsearch:8.18.1
 
 ENV IK_VERSION=8.18.1

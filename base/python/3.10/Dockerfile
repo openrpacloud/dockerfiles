@@ -1,5 +1,5 @@
-FROM python:3.10
 # FROM registry.yygu.cn/base/python:3.10
+FROM python:3.10
 
 ENV TZ=Asia/Shanghai
 RUN pip config set global.index-url https://mirrors.aliyun.com/pypi/simple/
